@@ -84,8 +84,8 @@ class GoogleSitemapTest extends FunctionalTest
         $this->assertEquals(2, $items->count());
 
         $this->assertDOSEquals(array(
-            array("Priority" => "0.2"),
-            array("Priority" => "0.4")
+            array("SitemapPriority" => "0.2"),
+            array("SitemapPriority" => "0.4")
         ), $items);
 
         GoogleSitemap::register_dataobject(OtherDataObject::class);
@@ -301,7 +301,7 @@ class GoogleSitemapTest extends FunctionalTest
         $tab = $fields->fieldByName('Root')->fieldByName('Settings')->fieldByName('GoogleSitemap');
 
         $this->assertInstanceOf(Tab::class, $tab);
-        $this->assertInstanceOf(DropdownField::class, $tab->fieldByName('Priority'));
+        $this->assertInstanceOf(DropdownField::class, $tab->fieldByName('SitemapPriority'));
         $this->assertInstanceOf(LiteralField::class, $tab->fieldByName('GoogleSitemapIntro'));
     }
 
@@ -314,15 +314,15 @@ class GoogleSitemapTest extends FunctionalTest
         $page = $this->objFromFixture('Page', 'Page1');
 
         // invalid field doesn't break google
-        $page->Priority = 'foo';
+        $page->SitemapPriority = 'foo';
         $this->assertEquals(0.5, $page->getGooglePriority());
 
         // custom value (set as string as db field is varchar)
-        $page->Priority = '0.2';
+        $page->SitemapPriority = '0.2';
         $this->assertEquals(0.2, $page->getGooglePriority());
 
         // -1 indicates that we should not index this
-        $page->Priority = -1;
+        $page->SitemapPriority = -1;
         $this->assertFalse($page->getGooglePriority());
     }
 

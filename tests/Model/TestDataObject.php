@@ -10,7 +10,7 @@ class TestDataObject extends DataObject implements TestOnly
 {
 
     private static $db = array(
-        'Priority' => 'Varchar(10)'
+        'SitemapPriority' => 'Varchar(10)'
     );
 
     public function canView($member = null)
