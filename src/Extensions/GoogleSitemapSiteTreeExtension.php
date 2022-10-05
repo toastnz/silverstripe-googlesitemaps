@@ -12,7 +12,7 @@ use SilverStripe\ORM\ArrayList;
 class GoogleSitemapSiteTreeExtension extends GoogleSitemapExtension
 {
     private static $db = [
-        "Priority" => "Varchar(5)"
+        "SitemapPriority" => "Varchar(5)"
     ];
 
     public function updateSettingsFields(&$fields)
@@ -49,10 +49,10 @@ class GoogleSitemapSiteTreeExtension extends GoogleSitemapExtension
             _t('GoogleSitemaps.TABGOOGLESITEMAP', 'Google Sitemap'),
             LiteralField::create("GoogleSitemapIntro", $message),
             $priority = DropdownField::create(
-                "Priority",
-                $this->owner->fieldLabel('Priority'),
+                "SitemapPriority",
+                $this->owner->fieldLabel('SitemapPriority'),
                 $prorities,
-                $this->owner->Priority
+                $this->owner->SitemapPriority
             )
         ));
 
@@ -63,7 +63,7 @@ class GoogleSitemapSiteTreeExtension extends GoogleSitemapExtension
     {
         parent::updateFieldLabels($labels);
 
-        $labels['Priority'] = _t('GoogleSitemaps.METAPAGEPRIO', "Page Priority");
+        $labels['SitemapPriority'] = _t('GoogleSitemaps.METAPAGEPRIO', "Page Priority");
     }
 
     /**
@@ -112,7 +112,7 @@ class GoogleSitemapSiteTreeExtension extends GoogleSitemapExtension
     public function getGooglePriority()
     {
         setlocale(LC_ALL, "en_US.UTF8");
-        $priority = $this->owner->getField('Priority');
+        $priority = $this->owner->getField('SitemapPriority');
 
         if (!$priority) {
             $parentStack = $this->owner->getAncestors();

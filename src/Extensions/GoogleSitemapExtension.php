@@ -95,10 +95,10 @@ class GoogleSitemapExtension extends DataExtension
      */
     public function getGooglePriority()
     {
-        $field = $this->owner->hasField('Priority');
+        $field = $this->owner->hasField('SitemapPriority');
 
         if ($field) {
-            $priority = $this->owner->getField('Priority');
+            $priority = $this->owner->getField('SitemapPriority');
 
             return ($priority < 0) ? false : $priority;
         }

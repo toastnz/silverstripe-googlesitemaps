@@ -1,9 +1,9 @@
 {
-	"name": "wilr/silverstripe-googlesitemaps",
+	"name": "toastnz/silverstripe-googlesitemaps",
 	"description": "SilverStripe support for the Google Sitemaps XML, enabling Google and other search engines to see all urls on your site. This helps your SilverStripe website rank well in search engines, and to encourage the information on your site to be discovered quickly.",
 	"type": "silverstripe-vendormodule",
 	"keywords": ["silverstripe", "googlesitemaps", "seo"],
-	"homepage": "https://github.com/wilr/silverstripe-googlesitemaps",
+	"homepage": "https://github.com/toastnz/silverstripe-googlesitemaps",
 	"license": "BSD-3-Clause",
 	"authors": [{
 		"name": "Will Rossiter",
